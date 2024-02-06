@@ -7,6 +7,7 @@ import { db } from "../_lib/prisma";
 import BarbershopItem from "./_components/barbershop-item";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../_lib/auth";
+import { Key } from "react";
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
@@ -49,7 +50,7 @@ export default async function Home() {
             <h2 className="pl-5 text-xs uppercase text-gray-400 font-bold mb-3">Agendamentos</h2>
 
             <div className="px-5 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
-              {confirmedBookings.map(booking => <BookingItem key={booking.id} booking={booking} />)}
+              {confirmedBookings.map((booking: { id: Key | null | undefined; }) => <BookingItem key={booking.id} booking={booking} />)}
             </div>
           </div>
         )}
@@ -59,7 +60,7 @@ export default async function Home() {
         <h2 className=" px-5 text-xs uppercase text-gray-400 font-bold mb-3">Recomendados</h2>
 
         <div className="flex gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden">
-          {barbershops.map((barbershop) => (
+          {barbershops.map((barbershop: { id: Key | null | undefined; }) => (
             <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
@@ -70,7 +71,7 @@ export default async function Home() {
         <h2 className=" px-5 text-xs uppercase text-gray-400 font-bold mb-3">Populares</h2>
 
         <div className="flex gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden">
-          {barbershops.map((barbershop) => (
+          {barbershops.map((barbershop: { id: Key | null | undefined; }) => (
             <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
