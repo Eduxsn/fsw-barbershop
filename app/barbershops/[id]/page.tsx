@@ -4,7 +4,7 @@ import ServiceItem from "./_components/service-item";
 import { Key } from "react";
 import { Service } from "@prisma/client";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/_lib/auth";
 
 interface BarbershopDetailPageProps {
     params: {
